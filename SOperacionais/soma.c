@@ -1,21 +1,28 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <time.h>
 
 int main(int argc, char *argv[]){
-	int i, qnt = atoi(argv[1]);
-	long soma = 0;
-	srand((unsigned)time(NULL));
+	long *vetor;
+	int i, tamanho, soma = 0;
 	
-	if (argc > 1){	
-		for (i = 0; i < qnt; i++){
-			soma += rand();
-			printf("s = %ld\n", soma);
+	//resetando os valores de rand 
+	srand((unsigned)time(NULL));
+
+	if (argc > 1){
+		/*alocando o tam do vetor C,
+		e armazendo os numeros aleatorios
+		*/
+		tamanho = atoi(argv[1]);
+		vetor = malloc(sizeof(int)*tamanho);
+		for (i = 0; i < tamanho; ++i){
+				vetor[i] = 1 + (rand() % 10);
 		}
-	} else{
-		printf("s = %ld\n", soma);
+		for (i = 0; i < tamanho; ++i){
+			soma += vetor[i];
+		}
 	}
 	
+	printf("%d\n", soma);
 	return 0;
 }

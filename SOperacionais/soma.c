@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 		tamanho = atoi(argv[1]);
 		vetor = malloc(sizeof(int)*tamanho);
 		for (i = 0; i < tamanho; ++i){
-				vetor[i] = 1 + (rand() % 10);
+				vetor[i] = 1 + (rand() % tamanho);
 		}
 		for (i = 0; i < tamanho; ++i){
 			soma += vetor[i];

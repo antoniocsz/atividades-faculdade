@@ -4,19 +4,30 @@
 #include <time.h>
 
 int main(int argc, char *argv[]){
-	int i, qnt;
-	long soma = 0;
-	srand((unsigned)time(NULL));
+	long *numeros_aleatorios, *filhos;
+	int i, tamanho, qnt_filhos, soma = 0;
 	
-	if (argc > 1){
-		qnt = atoi(argv[1]);	
-		for (i = 0; i < qnt; i++){
-			soma += rand();
-			printf("s = %ld\n", soma);
+	//resetando os valores de rand 
+	srand((unsigned)time(NULL));
+
+	//alocação do tam do numeros_aleatorios, e armazenamento dos numeros aleatorios
+	if (argc > 1){	
+		tamanho = atoi(argv[1]);
+		numeros_aleatorios = malloc(sizeof(int)*tamanho);
+		for (i = 0; i < tamanho; ++i){
+				numeros_aleatorios[i] = 1 + (rand() % 10);
 		}
-	} else{
-		printf("s = %ld\n", soma);
+	}
+
+	//Criação dos Filhos
+	if (argc > 2){
+		qnt_filhos = atoi(argv[2]);
+		filhos = malloc(sizeof(long)*qnt_filhos);
+		for (i = 0; i < qnt_filhos; ++i){
+			filhos[i] = fork();
+		}
 	}
 	
+	printf("%d\n", soma);
 	return 0;
 }

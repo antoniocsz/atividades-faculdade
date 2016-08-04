@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <time.h>
 
 int main(int argc, char *argv[]){
 	long *numeros_aleatorios, *filhos;
-	int i, tamanho, qnt_filhos, soma = 0;
+	int i, tamanho, qnt_filhos, setor_vetor, soma = 0;
 	
 	//resetando os valores de rand 
 	srand((unsigned)time(NULL));
